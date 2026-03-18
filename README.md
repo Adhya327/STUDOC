@@ -1,3 +1,3 @@
 # STUDOC
-Author- Adhya Joshi
+Author- Adhya Joshi <br>
 JAVA TRAINING
