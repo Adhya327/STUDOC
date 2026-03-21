@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studoc — Your Academic Vault</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NOISE OVERLAY -->
+<div class="noise"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="logo" onclick="showPage('home')">
+    <div class="logo-mark">
+      <span class="logo-bracket">[</span>
+      <span class="logo-s">S</span>
+      <span class="logo-bracket">]</span>
+    </div>
+    <span class="logo-text">Studoc</span>
+    <span class="logo-tagline">Academic Vault</span>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link active" data-page="home" onclick="showPage('home')">
+      <span class="nav-icon">⌂</span> Home
+    </a>
+    <a class="nav-link" data-page="documents" onclick="showPage('documents')">
+      <span class="nav-icon">◧</span> Documents
+    </a>
+    <a class="nav-link" data-page="community" onclick="showPage('community')">
+      <span class="nav-icon">◉</span> Community
+    </a>
+    <a class="nav-link" data-page="about" onclick="showPage('about')">
+      <span class="nav-icon">◈</span> About
+    </a>
+    <button class="nav-cta" onclick="showPage('signin')">Sign In</button>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ============ SIGN IN PAGE ============ -->
+<div id="signin" class="page active">
+  <div class="auth-wrapper">
+    <div class="auth-left">
+      <div class="auth-quote">
+        <div class="quote-mark">"</div>
+        <p>Knowledge is the only vault that grows richer the more you share from it.</p>
+        <span class="quote-attr">— The Studoc Ethos</span>
+      </div>
+      <div class="auth-stats">
+        <div class="stat"><span class="stat-num">12K+</span><span class="stat-label">Students</span></div>
+        <div class="stat"><span class="stat-num">48K+</span><span class="stat-label">Documents</span></div>
+        <div class="stat"><span class="stat-num">200+</span><span class="stat-label">Topics</span></div>
+      </div>
+    </div>
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-logo-mark">[S]</div>
+        <h2>Welcome Back</h2>
+        <p>Sign in to your academic vault</p>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" placeholder="you@university.edu">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPass" placeholder="••••••••••">
+      </div>
+      <div class="form-options">
+        <label class="checkbox-label">
+          <input type="checkbox"> Remember me
+        </label>
+        <a class="forgot-link">Forgot password?</a>
+      </div>
+      <button class="btn-primary full-width" onclick="handleLogin()">
+        <span>Enter Vault</span>
+        <span class="btn-arrow">→</span>
+      </button>
+      <div class="auth-divider"><span>or</span></div>
+      <button class="btn-ghost full-width" onclick="showPage('home')">
+        Continue as Guest
+      </button>
+      <p class="auth-switch">New to Studoc? <a onclick="showSignup()">Create Account</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOME PAGE ============ -->
+<div id="home" class="page">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg-text">STUDOC</div>
+    <div class="hero-content">
+      <div class="hero-badge">● Live Platform</div>
+      <h1 class="hero-title">
+        Your Academic<br>
+        <span class="hero-highlight">Documents,</span><br>
+        Organized.
+      </h1>
+      <p class="hero-sub">Upload, categorize, and access your study materials from anywhere. Connect with a community of driven students.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="showPage('documents')">
+          <span>Open Vault</span> <span class="btn-arrow">→</span>
+        </button>
+        <button class="btn-outline" onclick="showPage('community')">
+          Join Community
+        </button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="doc-stack">
+        <div class="doc-card dc-1">
+          <div class="dc-icon">📘</div>
+          <div class="dc-info"><strong>Physics Notes</strong><span>Chapter 4–7</span></div>
+          <div class="dc-tag">Science</div>
+        </div>
+        <div class="doc-card dc-2">
+          <div class="dc-icon">📊</div>
+          <div class="dc-info"><strong>Stats Assignment</strong><span>Probability</span></div>
+          <div class="dc-tag">Math</div>
+        </div>
+        <div class="doc-card dc-3">
+          <div class="dc-icon">📝</div>
+          <div class="dc-info"><strong>Essay Draft</strong><span>Literature</span></div>
+          <div class="dc-tag">Humanities</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Everything a Student Needs</h2>
+    <div class="features-grid">
+      <div class="feature-card" onclick="showPage('documents')">
+        <div class="feature-icon">◧</div>
+        <h3>Smart Storage</h3>
+        <p>Upload and organize PDFs, notes, assignments and more with smart categorization.</p>
+        <span class="feature-link">Explore →</span>
+      </div>
+      <div class="feature-card" onclick="showPage('resume')">
+        <div class="feature-icon">◈</div>
+        <h3>Resume Builder</h3>
+        <p>Build a clean, professional resume from your academic profile in minutes.</p>
+        <span class="feature-link">Build →</span>
+      </div>
+      <div class="feature-card" onclick="showPage('community')">
+        <div class="feature-icon">◉</div>
+        <h3>Intellectual Community</h3>
+        <p>Discuss ideas, ask questions, and guide peers across any subject or topic.</p>
+        <span class="feature-link">Join →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Upload Strip -->
+  <section class="quick-upload">
+    <div class="qu-text">
+      <h3>Drop a file. Store it forever.</h3>
+      <p>Drag & drop or click to upload any document instantly.</p>
+    </div>
+    <div class="qu-zone" id="homeDropZone" ondragover="event.preventDefault()" ondrop="handleHomeDrop(event)">
+      <div class="qu-zone-icon">↑</div>
+      <span>Drop here or <label for="homeFileInput" class="qu-browse">browse</label></span>
+      <input type="file" id="homeFileInput" multiple style="display:none" onchange="handleHomeFileSelect(event)">
+    </div>
+  </section>
+</div>
+
+<!-- ============ DOCUMENTS PAGE ============ -->
+<div id="documents" class="page">
+  <div class="page-header">
+    <div>
+      <div class="section-label">Your Library</div>
+      <h2 class="page-title">Document Vault</h2>
+    </div>
+    <button class="btn-primary" onclick="document.getElementById('uploadInput').click()">
+      + Upload File
+    </button>
+    <input type="file" id="uploadInput" multiple style="display:none" onchange="handleUpload(event)">
+  </div>
+
+  <!-- Upload Drop Zone -->
+  <div class="drop-zone" id="dropZone" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="handleDrop(event)">
+    <div class="dz-icon">◧</div>
+    <p><strong>Drag & drop files here</strong></p>
+    <span>PDF, DOCX, PPTX, JPG, PNG supported</span>
+  </div>
+
+  <!-- Category Filter -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterDocs('all', this)">All</button>
+    <button class="filter-btn" onclick="filterDocs('science', this)">Science</button>
+    <button class="filter-btn" onclick="filterDocs('math', this)">Math</button>
+    <button class="filter-btn" onclick="filterDocs('humanities', this)">Humanities</button>
+    <button class="filter-btn" onclick="filterDocs('engineering', this)">Engineering</button>
+    <button class="filter-btn" onclick="filterDocs('other', this)">Other</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="docSearch" placeholder="Search documents..." oninput="searchDocs(this.value)">
+  </div>
+
+  <!-- Documents Grid -->
+  <div class="docs-grid" id="docsGrid">
+    <div class="empty-state" id="emptyState">
+      <div class="empty-icon">◧</div>
+      <h3>Your vault is empty</h3>
+      <p>Upload your first document to get started</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ RESUME PAGE ============ -->
+<div id="resume" class="page">
+  <div class="page-header">
+    <div>
+      <div class="section-label">Career Tools</div>
+      <h2 class="page-title">Resume Builder</h2>
+    </div>
+    <button class="btn-primary" onclick="generateResume()">
+      ↓ Export PDF
+    </button>
+  </div>
+
+  <div class="resume-layout">
+    <div class="resume-form">
+      <div class="form-section">
+        <h4 class="form-section-title">Personal Info</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="rName" placeholder="Your Full Name">
+          </div>
+          <div class="form-group">
+            <label>Field / Major</label>
+            <input type="text" id="rField" placeholder="e.g. Computer Science">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="rEmail" placeholder="email@university.edu">
+          </div>
+          <div class="form-group">
+            <label>LinkedIn / Portfolio</label>
+            <input type="text" id="rLink" placeholder="linkedin.com/in/you">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h4 class="form-section-title">Summary</h4>
+        <textarea id="rSummary" rows="3" placeholder="A brief, powerful summary of who you are academically..."></textarea>
+      </div>
+
+      <div class="form-section">
+        <h4 class="form-section-title">Education</h4>
+        <div class="form-group">
+          <label>University / College</label>
+          <input type="text" id="rUniv" placeholder="University Name">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Degree</label>
+            <input type="text" id="rDegree" placeholder="B.Tech / B.Sc / etc.">
+          </div>
+          <div class="form-group">
+            <label>Year</label>
+            <input type="text" id="rYear" placeholder="2021–2025">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h4 class="form-section-title">Skills</h4>
+        <textarea id="rSkills" rows="2" placeholder="Python, Data Analysis, Research, Communication..."></textarea>
+      </div>
+
+      <div class="form-section">
+        <h4 class="form-section-title">Projects / Experience</h4>
+        <textarea id="rProjects" rows="4" placeholder="Describe your key projects or experience..."></textarea>
+      </div>
+
+      <button class="btn-primary full-width" onclick="generateResume()">
+        Generate Resume Preview →
+      </button>
+    </div>
+
+    <!-- Resume Preview -->
+    <div class="resume-preview" id="resumePreview">
+      <div class="rp-placeholder">
+        <div class="rp-icon">◈</div>
+        <p>Fill in the form to preview your resume</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ COMMUNITY PAGE ============ -->
+<div id="community" class="page">
+  <div class="page-header">
+    <div>
+      <div class="section-label">Intellectual Exchange</div>
+      <h2 class="page-title">Student Community</h2>
+    </div>
+    <div class="online-badge">● <span id="onlineCount">47</span> online now</div>
+  </div>
+
+  <!-- Trending Tags -->
+  <div class="trending-tags">
+    <span class="tag-label">Trending:</span>
+    <button class="topic-tag active" onclick="filterPosts('all', this)">#All</button>
+    <button class="topic-tag" onclick="filterPosts('math', this)">#Mathematics</button>
+    <button class="topic-tag" onclick="filterPosts('cs', this)">#ComputerScience</button>
+    <button class="topic-tag" onclick="filterPosts('physics', this)">#Physics</button>
+    <button class="topic-tag" onclick="filterPosts('career', this)">#CareerAdvice</button>
+    <button class="topic-tag" onclick="filterPosts('resources', this)">#Resources</button>
+  </div>
+
+  <!-- Post Composer -->
+  <div class="post-composer">
+    <div class="composer-avatar">A</div>
+    <div class="composer-body">
+      <textarea id="postInput" placeholder="Share a thought, ask a question, or start a discussion..." rows="3"></textarea>
+      <div class="composer-footer">
+        <div class="composer-tags">
+          <select id="postTag">
+            <option value="general">General</option>
+            <option value="math">Mathematics</option>
+            <option value="cs">Computer Science</option>
+            <option value="physics">Physics</option>
+            <option value="career">Career Advice</option>
+            <option value="resources">Resources</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="addPost()">
+          Post <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Posts Feed -->
+  <div class="posts-feed" id="posts">
+    <!-- Seed post -->
+    <div class="post-card" data-tag="cs">
+      <div class="post-header">
+        <div class="post-avatar" style="background:var(--accent-warm)">R</div>
+        <div class="post-meta">
+          <strong>Riya Sharma</strong>
+          <span>2 hours ago · <span class="post-tag-badge">#ComputerScience</span></span>
+        </div>
+      </div>
+      <p class="post-body">Does anyone have good resources for learning Dynamic Programming? I've been stuck on the knapsack problem for days. Any tips would be really helpful!</p>
+      <div class="post-actions">
+        <button class="post-btn" onclick="likePost(this)">♡ <span class="like-count">14</span></button>
+        <button class="post-btn" onclick="toggleReply(this)">◎ Reply</button>
+        <button class="post-btn share-btn" onclick="copyPost(this)">⎘ Share</button>
+      </div>
+      <div class="reply-box" style="display:none">
+        <input type="text" placeholder="Write a reply..." class="reply-input">
+        <button class="btn-sm" onclick="submitReply(this)">Send</button>
+      </div>
+      <div class="replies-container"></div>
+    </div>
+
+    <div class="post-card" data-tag="career">
+      <div class="post-header">
+        <div class="post-avatar" style="background:#5c6bc0">M</div>
+        <div class="post-meta">
+          <strong>Mohit Verma</strong>
+          <span>5 hours ago · <span class="post-tag-badge">#CareerAdvice</span></span>
+        </div>
+      </div>
+      <p class="post-body">Just got my first internship offer! For anyone applying — your projects matter more than your CGPA. Build things, share them on GitHub, and write about them. That's what worked for me.</p>
+      <div class="post-actions">
+        <button class="post-btn" onclick="likePost(this)">♡ <span class="like-count">63</span></button>
+        <button class="post-btn" onclick="toggleReply(this)">◎ Reply</button>
+        <button class="post-btn share-btn" onclick="copyPost(this)">⎘ Share</button>
+      </div>
+      <div class="reply-box" style="display:none">
+        <input type="text" placeholder="Write a reply..." class="reply-input">
+        <button class="btn-sm" onclick="submitReply(this)">Send</button>
+      </div>
+      <div class="replies-container"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT PAGE ============ -->
+<div id="about" class="page">
+  <div class="about-hero">
+    <div class="section-label">Our Story</div>
+    <h2 class="about-title">Built by Students,<br>For Students.</h2>
+    <p class="about-sub">Studoc was born from the frustration of losing important notes before exams. We built a platform that treats your academic work with the respect it deserves.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <div class="about-card-num">01</div>
+      <h3>The Mission</h3>
+      <p>To give every student a reliable, organized digital vault for their academic documents — accessible from any device, at any time.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-num">02</div>
+      <h3>The Community</h3>
+      <p>We believe knowledge compounds when shared. Our community forum connects intellectual students who help, challenge, and inspire each other.</p>
+    </div>
+    <div class="about-card">
+      <div class="about-card-num">03</div>
+      <h3>The Vision</h3>
+      <p>A world where academic knowledge flows freely between students, breaking barriers of access and geography.</p>
+    </div>
+  </div>
+
+  <div class="about-stats">
+    <div class="about-stat"><span>12,000+</span><p>Active Students</p></div>
+    <div class="about-stat"><span>48,000+</span><p>Documents Stored</p></div>
+    <div class="about-stat"><span>200+</span><p>Subjects Covered</p></div>
+    <div class="about-stat"><span>99.9%</span><p>Uptime</p></div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== STATE =====
+let documents = [];
+let currentFilter = 'all';
+let currentPostFilter = 'all';
+
+// ===== NAVIGATION =====
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+  const link = document.querySelector(`[data-page="${pageId}"]`);
+  if (link) link.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('open');
+}
+
+function handleLogin() {
+  const email = document.getElementById('loginEmail').value;
+  const pass = document.getElementById('loginPass').value;
+  if (!email || !pass) { showToast('Please fill in all fields', 'error'); return; }
+  showToast('Welcome back! 🎓', 'success');
+  setTimeout(() => showPage('home'), 800);
+}
+
+function showSignup() {
+  showToast('Sign up coming soon!', 'info');
+}
+
+// ===== DOCUMENTS =====
+const docIcons = { pdf: '📄', doc: '📝', docx: '📝', pptx: '📊', ppt: '📊', jpg: '🖼', jpeg: '🖼', png: '🖼', mp4: '🎬', default: '📁' };
+
+function getIcon(filename) {
+  const ext = filename.split('.').pop().toLowerCase();
+  return docIcons[ext] || docIcons.default;
+}
+
+function getCategoryFromName(name) {
+  const n = name.toLowerCase();
+  if (n.includes('phys') || n.includes('chem') || n.includes('bio')) return 'science';
+  if (n.includes('math') || n.includes('calc') || n.includes('stat')) return 'math';
+  if (n.includes('cs') || n.includes('code') || n.includes('prog') || n.includes('algo')) return 'engineering';
+  if (n.includes('hist') || n.includes('lit') || n.includes('essay')) return 'humanities';
+  return 'other';
+}
+
+function handleUpload(event) {
+  const files = Array.from(event.target.files);
+  files.forEach(f => addDocument(f));
+  event.target.value = '';
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  dragLeave();
+  const files = Array.from(event.dataTransfer.files);
+  files.forEach(f => addDocument(f));
+}
+
+function handleHomeDrop(event) {
+  event.preventDefault();
+  const files = Array.from(event.dataTransfer.files);
+  files.forEach(f => addDocument(f));
+  if (files.length) { showToast(`${files.length} file(s) uploaded!`, 'success'); showPage('documents'); }
+}
+
+function handleHomeFileSelect(event) {
+  const files = Array.from(event.target.files);
+  files.forEach(f => addDocument(f));
+  if (files.length) { showToast(`${files.length} file(s) uploaded!`, 'success'); showPage('documents'); }
+}
+
+function dragOver(e) { e.preventDefault(); document.getElementById('dropZone').classList.add('drag-active'); }
+function dragLeave() { document.getElementById('dropZone').classList.remove('drag-active'); }
+
+function addDocument(file) {
+  const doc = {
+    id: Date.now() + Math.random(),
+    name: file.name,
+    size: formatSize(file.size),
+    category: getCategoryFromName(file.name),
+    date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+    icon: getIcon(file.name)
+  };
+  documents.push(doc);
+  renderDocs();
+  showToast(`"${file.name}" uploaded!`, 'success');
+}
+
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(1) + ' MB';
+}
+
+function renderDocs() {
+  const grid = document.getElementById('docsGrid');
+  const empty = document.getElementById('emptyState');
+  const search = document.getElementById('docSearch').value.toLowerCase();
+
+  const filtered = documents.filter(d => {
+    const matchCat = currentFilter === 'all' || d.category === currentFilter;
+    const matchSearch = d.name.toLowerCase().includes(search);
+    return matchCat && matchSearch;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '';
+    grid.appendChild(empty);
+    empty.style.display = 'flex';
+    return;
+  }
+
+  empty.style.display = 'none';
+  grid.innerHTML = filtered.map(d => `
+    <div class="doc-item" data-id="${d.id}">
+      <div class="di-icon">${d.icon}</div>
+      <div class="di-info">
+        <strong class="di-name">${d.name}</strong>
+        <span class="di-meta">${d.size} · ${d.date}</span>
+        <span class="di-cat cat-${d.category}">${d.category}</span>
+      </div>
+      <div class="di-actions">
+        <button class="icon-btn" title="Download" onclick="showToast('Downloading...', 'info')">↓</button>
+        <button class="icon-btn danger" title="Delete" onclick="deleteDoc(${d.id})">✕</button>
+      </div>
+    </div>
+  `).join('');
+  grid.appendChild(empty);
+}
+
+function deleteDoc(id) {
+  documents = documents.filter(d => d.id !== id);
+  renderDocs();
+  showToast('Document removed', 'info');
+}
+
+function filterDocs(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDocs();
+}
+
+function searchDocs(val) { renderDocs(); }
+
+// ===== RESUME =====
+function generateResume() {
+  const name = document.getElementById('rName').value || 'Your Name';
+  const field = document.getElementById('rField').value || 'Your Major';
+  const email = document.getElementById('rEmail').value || 'email@university.edu';
+  const link = document.getElementById('rLink').value || '';
+  const summary = document.getElementById('rSummary').value || 'A passionate student committed to academic excellence and continuous learning.';
+  const univ = document.getElementById('rUniv').value || 'University Name';
+  const degree = document.getElementById('rDegree').value || 'Bachelor\'s Degree';
+  const year = document.getElementById('rYear').value || '2021–2025';
+  const skills = document.getElementById('rSkills').value || 'Add your skills here';
+  const projects = document.getElementById('rProjects').value || 'Describe your projects here';
+
+  document.getElementById('resumePreview').innerHTML = `
+    <div class="resume-doc">
+      <div class="rd-header">
+        <h1>${name}</h1>
+        <p class="rd-field">${field}</p>
+        <div class="rd-contact">
+          <span>${email}</span>
+          ${link ? `<span>· ${link}</span>` : ''}
+        </div>
+      </div>
+      <div class="rd-section">
+        <h3>Summary</h3>
+        <p>${summary}</p>
+      </div>
+      <div class="rd-section">
+        <h3>Education</h3>
+        <div class="rd-entry">
+          <strong>${univ}</strong>
+          <span class="rd-year">${year}</span>
+        </div>
+        <p>${degree}</p>
+      </div>
+      <div class="rd-section">
+        <h3>Skills</h3>
+        <div class="rd-skills">${skills.split(',').map(s => `<span class="rd-skill">${s.trim()}</span>`).join('')}</div>
+      </div>
+      <div class="rd-section">
+        <h3>Projects & Experience</h3>
+        <p>${projects}</p>
+      </div>
+    </div>
+  `;
+  showToast('Resume preview generated!', 'success');
+}
+
+// ===== COMMUNITY =====
+const tagMap = { general: 'General', math: 'Mathematics', cs: 'ComputerScience', physics: 'Physics', career: 'CareerAdvice', resources: 'Resources' };
+const avatarColors = ['#d4a547', '#5c6bc0', '#26a69a', '#ef5350', '#66bb6a', '#ab47bc'];
+
+function addPost() {
+  const input = document.getElementById('postInput');
+  const tag = document.getElementById('postTag').value;
+  const text = input.value.trim();
+  if (!text) { showToast('Write something first!', 'error'); return; }
+
+  const feed = document.getElementById('posts');
+  const color = avatarColors[Math.floor(Math.random() * avatarColors.length)];
+  const card = document.createElement('div');
+  card.className = 'post-card new-post';
+  card.dataset.tag = tag;
+  card.innerHTML = `
+    <div class="post-header">
+      <div class="post-avatar" style="background:${color}">Y</div>
+      <div class="post-meta">
+        <strong>You</strong>
+        <span>Just now · <span class="post-tag-badge">#${tagMap[tag]}</span></span>
+      </div>
+    </div>
+    <p class="post-body">${text}</p>
+    <div class="post-actions">
+      <button class="post-btn" onclick="likePost(this)">♡ <span class="like-count">0</span></button>
+      <button class="post-btn" onclick="toggleReply(this)">◎ Reply</button>
+      <button class="post-btn share-btn" onclick="copyPost(this)">⎘ Share</button>
+    </div>
+    <div class="reply-box" style="display:none">
+      <input type="text" placeholder="Write a reply..." class="reply-input">
+      <button class="btn-sm" onclick="submitReply(this)">Send</button>
+    </div>
+    <div class="replies-container"></div>
+  `;
+  feed.insertBefore(card, feed.firstChild);
+  input.value = '';
+  filterPostsActive();
+  showToast('Post shared with the community! 🎓', 'success');
+  setTimeout(() => card.classList.remove('new-post'), 600);
+}
+
+function likePost(btn) {
+  const count = btn.querySelector('.like-count');
+  const liked = btn.dataset.liked;
+  if (liked) { count.textContent = parseInt(count.textContent) - 1; delete btn.dataset.liked; btn.style.color = ''; }
+  else { count.textContent = parseInt(count.textContent) + 1; btn.dataset.liked = '1'; btn.style.color = 'var(--accent-warm)'; }
+}
+
+function toggleReply(btn) {
+  const box = btn.closest('.post-card').querySelector('.reply-box');
+  box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+  if (box.style.display === 'flex') box.querySelector('.reply-input').focus();
+}
+
+function submitReply(btn) {
+  const input = btn.previousElementSibling;
+  const text = input.value.trim();
+  if (!text) return;
+  const container = btn.closest('.post-card').querySelector('.replies-container');
+  const reply = document.createElement('div');
+  reply.className = 'reply-item';
+  reply.innerHTML = `<div class="reply-avatar">Y</div><div class="reply-text"><strong>You</strong><p>${text}</p></div>`;
+  container.appendChild(reply);
+  input.value = '';
+  btn.closest('.reply-box').style.display = 'none';
+  showToast('Reply posted!', 'success');
+}
+
+function copyPost(btn) {
+  const text = btn.closest('.post-card').querySelector('.post-body').textContent;
+  navigator.clipboard.writeText(text).catch(() => {});
+  showToast('Post copied!', 'info');
+}
+
+function filterPosts(tag, btn) {
+  currentPostFilter = tag;
+  document.querySelectorAll('.topic-tag').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  filterPostsActive();
+}
+
+function filterPostsActive() {
+  document.querySelectorAll('.post-card').forEach(card => {
+    card.style.display = (currentPostFilter === 'all' || card.dataset.tag === currentPostFilter) ? 'block' : 'none';
+  });
+}
+
+// ===== TOAST =====
+function showToast(msg, type = 'info') {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = `toast show toast-${type}`;
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ===== INIT =====
+document.addEventListener('DOMContentLoaded', () => {
+  renderDocs();
+  // Animate online count
+  setInterval(() => {
+    const el = document.getElementById('onlineCount');
+    if (el) el.textContent = Math.floor(40 + Math.random() * 20);
+  }, 5000);
+});
+</script>
+</body>
+</html>
